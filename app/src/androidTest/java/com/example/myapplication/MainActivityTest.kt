@@ -7,6 +7,8 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import com.example.myapplication.PageObject.Companion.checkWithHint
+import com.example.myapplication.PageObject.Companion.checkWithId
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -26,7 +28,8 @@ class MainActivityTest{
     fun AddProductActivityTest() {
         val activityScanario = ActivityScenario.launch(MainActivity::class.java)
         Thread.sleep(2000)
-        onView(withId(R.id.content_main_Action)).check(matches(isDisplayed()))
+//        onView(withId(R.id.content_main_Action)).check(matches(isDisplayed()))
+        checkWithId(R.id.content_main_Action)
         onView(withId(R.id.goToAddProduct)).check(matches(isDisplayed()))
 
         onView(withId(R.id.goToAddProduct)).perform(click())
@@ -37,7 +40,8 @@ class MainActivityTest{
 
         onView(withHint("Product name")).check(matches((isDisplayed())))
         onView(withHint("Owner name")).check(matches((isDisplayed())))
-        onView(withHint("Purchasing date")).check(matches(isDisplayed()))
+        //onView(withHint("Purchasing date")).check(matches(isDisplayed()))
+        checkWithHint("Purchasing date")
 
         onView(withId(R.id.addProductSubmitButton)).perform(click())
         Thread.sleep(2000)
